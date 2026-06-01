@@ -7,4 +7,4 @@ public record CreateTicketRequest(
     @NotBlank String title,
     String description,
     @NotNull String priority
-)
+) {}
