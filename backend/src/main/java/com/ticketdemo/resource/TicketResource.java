@@ -1,3 +1,5 @@
+package com.ticketdemo.resource;
+
 import com.ticketdemo.dto.ChangePriorityRequest;
 import com.ticketdemo.dto.CreateTicketRequest;
 import com.ticketdemo.entity.Ticket;
