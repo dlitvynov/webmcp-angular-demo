@@ -1,3 +1,8 @@
+/*
+ * Archivo: TicketResource.java
+ * Descripción: Recurso REST que expone los endpoints para gestionar tickets mediante la API.
+ */
+
 package com.ticketdemo.resource;
 
 import com.ticketdemo.dto.ChangePriorityRequest;

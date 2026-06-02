@@ -1,4 +1,9 @@
-import { createTicket, fetchTickets, closeTicketApi } from './api.js';
+/*
+ * Archivo: webmcp.js
+ * Descripción: Módulo encargado de integrar la aplicación con WebMCP, registrando herramientas que permiten a agentes de IA crear, consultar y cerrar tickets.
+ */
+
+import { createTicket, fetchTickets, closeTicketApi, changeTicketPriorityApi } from './api.js';
 import { renderTicketsList, showTemporaryMessage } from './ui.js';
 
 // Función para registrar las capacidades de nuestra web en el navegador
@@ -102,6 +107,40 @@ export function initializeWebMCP() {
                 return { success: true, message: `Ticket #${args.id} cerrado correctamente.` };
             } catch (error) {
                 return { success: false, error: `No se pudo cerrar el ticket #${args.id}. Verifica si el ID existe.` };
+            }
+        }
+    });
+
+    // ⚡ HERRAMIENTA 4: Cambiar la prioridad de un ticket
+    document.modelContext.registerTool({
+        name: 'cambiar_prioridad_ticket',
+        description: 'Modifica o actualiza el nivel de prioridad de un ticket existente utilizando su ID numérico.',
+        parameters: {
+            type: 'object',
+            properties: {
+                id: { 
+                    type: 'number', 
+                    description: 'El ID numérico único del ticket que se desea modificar.' 
+                },
+                priority: { 
+                    type: 'string', 
+                    enum: ['LOW', 'MEDIUM', 'HIGH'], 
+                    description: 'El nuevo nivel de urgencia o prioridad que se le asignará al ticket.' 
+                }
+            },
+            required: ['id', 'priority']
+        },
+        execute: async (args) => {
+            showTemporaryMessage(`🤖 IA actuando: Cambiando prioridad del ticket #${args.id} a ${args.priority}...`);
+            try {
+                await changeTicketPriorityApi(args.id, args.priority);
+                
+                // Disparamos el evento para que main.js vuelva a cargar la lista y ui.js repinte las tarjetas
+                document.dispatchEvent(new CustomEvent('ticket-updated'));
+                
+                return { success: true, message: `Prioridad del ticket #${args.id} actualizada a ${args.priority} con éxito.` };
+            } catch (error) {
+                return { success: false, error: `No se pudo cambiar la prioridad del ticket #${args.id}.` };
             }
         }
     });

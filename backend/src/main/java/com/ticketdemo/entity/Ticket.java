@@ -1,3 +1,8 @@
+/*
+ * Archivo: Ticket.java
+ * Descripción: Entidad que representa un ticket y su estructura en la base de datos.
+*/
+
 package com.ticketdemo.entity;
 
 import com.ticketdemo.enums.TicketPriority;

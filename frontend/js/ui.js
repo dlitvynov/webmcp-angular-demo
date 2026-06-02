@@ -1,3 +1,8 @@
+/*
+ * Archivo: ui.js
+ * Descripción: Módulo encargado de renderizar los tickets en la interfaz y mostrar mensajes temporales al usuario.
+ */
+
 const container = document.getElementById('tickets-container');
 
 // Renderiza la lista completa de tickets reales procedentes del backend

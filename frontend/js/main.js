@@ -1,3 +1,8 @@
+/*
+ * Archivo: main.js
+ * Descripción: Punto de entrada de la aplicación. Gestiona los eventos de la interfaz, la carga de tickets y la integración con WebMCP.
+ */
+
 import { fetchTickets, closeTicketApi } from './api.js';
 import { renderTicketsList, showTemporaryMessage } from './ui.js';
 import { initializeWebMCP } from './webmcp.js'; // 1. Importamos el puente

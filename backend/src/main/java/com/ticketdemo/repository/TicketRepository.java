@@ -1,7 +1,6 @@
 /*
  * Archivo: TicketRepository.java
  * Descripción: Repositorio encargado de gestionar el acceso y las operaciones sobre la entidad Ticket en la base de datos.
- * Autor: Denys
  */
 
 package com.ticketdemo.repository;

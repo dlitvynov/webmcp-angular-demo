@@ -1,3 +1,8 @@
+/*
+ * Archivo: TicketService.java
+ * Descripción: Servicio encargado de gestionar la lógica de negocio relacionada con los tickets.
+ */
+
 package com.ticketdemo.service;
 
 import com.ticketdemo.dto.ChangePriorityRequest;

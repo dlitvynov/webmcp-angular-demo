@@ -1,7 +1,6 @@
 /*
  * Archivo: CreateTicketRequest.java
  * Descripción: DTO que define la estructura y validaciones de los datos necesarios para crear un ticket.
- * Autor: Denys
  */
 
 package com.ticketdemo.dto;
