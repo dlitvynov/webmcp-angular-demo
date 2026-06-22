@@ -1,0 +1,64 @@
+<header class="navbar">
+    <h1>🎟️ Sistema de Gestión de Tickets</h1>
+    <span class="badge">Listo para WebMCP</span>
+</header>
+
+<main class="container">
+    <section class="form-section">
+        <h2>Crear Nuevo Ticket</h2>
+        <form (ngSubmit)="onSubmit()" #ticketForm="ngForm">
+            <div class="form-group">
+                <label for="title">Título del Problema</label>
+                <input type="text" id="title" name="title" [(ngModel)]="formModel.title" required placeholder="Ej. Error en la VPN corporativa">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Descripción Detallada</label>
+                <textarea id="description" name="description" [(ngModel)]="formModel.description" rows="4" placeholder="Describe los síntomas del error..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Prioridad</label>
+                <select id="priority" name="priority" [(ngModel)]="formModel.priority">
+                    <option value="LOW">Baja</option>
+                    <option value="MEDIUM">Media</option>
+                    <option value="HIGH">Alta</option>
+                </select>
+            </div>
+
+            <button type="submit" [disabled]="!ticketForm.form.valid" class="btn btn-primary">Guardar Ticket</button>
+        </form>
+    </section>
+
+    <section class="list-section">
+        <div class="list-header">
+            <h2>Tickets en el Sistema</h2>
+            <button (click)="refreshTickets()" class="btn btn-secondary">🔄 Actualizar</button>
+        </div>
+
+        <div id="tickets-container" class="tickets-grid">
+            @if (ticketService.temporaryMessage(); as msg) {
+            <div class="temporary-notice">
+                {{ msg }}
+            </div>
+            }
+
+            @for (ticket of ticketService.tickets(); track ticket.id) {
+            <div class="ticket-card" [ngClass]="[ticket.priority, ticket.status]">
+                <h3>#{{ ticket.id }} - {{ ticket.title }}</h3>
+                <p>{{ ticket.description || 'Sin descripción.' }}</p>
+                <div class="ticket-meta">
+                    <span class="tag tag-status" [ngClass]="ticket.status">{{ ticket.status }}</span>
+                    <span class="tag">Prioridad: {{ ticket.priority }}</span>
+                </div>
+
+                @if (ticket.status === 'OPEN') {
+                <button class="btn-close-ticket" (click)="handleClose(ticket.id)">Cerrar</button>
+                }
+            </div>
+            } @empty {
+            <p class="loading-text">No hay tickets registrados en el sistema.</p>
+            }
+        </div>
+    </section>
+</main>
