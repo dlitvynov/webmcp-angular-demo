@@ -48,7 +48,7 @@ export class TicketService {
         return actualizado;
     }
 
-    // Feedback visual temporal (Sustituye la manipulación de UI de ui.js)
+    // Feedback visual temporal
     showNotice(message: string): void {
         this.temporaryMessage.set(message);
         setTimeout(() => {

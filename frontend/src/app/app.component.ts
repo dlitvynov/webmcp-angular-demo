@@ -12,7 +12,6 @@ export class AppComponent {
     private webMcpService = inject(WebMcpService);
 
     constructor() {
-        // Encendemos los superpoderes de la IA nada más iniciar la app
         this.webMcpService.initializeWebMCP();
     }
 }

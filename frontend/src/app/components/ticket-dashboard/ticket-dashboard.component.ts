@@ -12,7 +12,6 @@ import { CreateTicketRequest } from '../../models/ticket.model';
     styleUrls: ['./ticket-dashboard.component.css']
 })
 export class TicketDashboardComponent implements OnInit {
-    // Inyección de dependencias moderna
     public ticketService = inject(TicketService);
 
     // Modelo del formulario local
