@@ -4,6 +4,8 @@ Ejemplo de implementación de **WebMCP** — un enfoque basado en navegador que 
 
 La app es un panel de gestión de tickets de soporte respaldado por una API REST. El agente puede crear, listar, cerrar y repriorizar tickets a través de 4 herramientas WebMCP registradas.
 
+Documentación para la implementación de **WebMCP**: https://cemtric.atlassian.net/wiki/spaces/NA/pages/3500048385/C+mo+crear+un+WebMCP
+
 ## Stack
 
 - **Backend:** Quarkus 3.x + Hibernate ORM + RESTEasy Reactive

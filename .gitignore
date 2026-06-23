@@ -21,7 +21,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
+frontend/.vscode/tasks.json
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -39,6 +39,20 @@ testem.log
 /typings
 __screenshots__/
 
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Angular
+.angular/
+frontend/.angular/
+
 # System files
 .DS_Store
 Thumbs.db
+
+# Repositorio Git anidado
+ticket-mcp-demo.git/
+
+# Cualquier repo bare que alguien copie dentro
+*.git/
